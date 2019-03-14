@@ -1,7 +1,7 @@
 {
-    "name": "Maze",
+    "name": "REJARS_BoilerPlate",
     "version": "1.0.0",
-    "description": "Economico y Audaz react project",
+    "description": "REJARS_BoilerPlate",
     "devDependencies": {
         "awesome-typescript-loader": "^5.2.1",
         "css-loader": "^1.0.1",
