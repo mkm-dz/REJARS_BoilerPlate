@@ -2,7 +2,7 @@ import * as React from "react";
 
 interface IOwnProps {
     title: string
-    callBack: (event: React.MouseEvent<HTMLInputElement>)=>{}
+    callBack: (event: React.MouseEvent<HTMLInputElement>)=>void;
 }
 
 export class ButtonComponent extends React.PureComponent<IOwnProps> {

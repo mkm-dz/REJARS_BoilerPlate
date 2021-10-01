@@ -1,12 +1,16 @@
 {
     "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
+        "removeComments": true,
+        "strict": true,
         "outDir": "./dist/",
         "sourceMap": true,
-        "noImplicitAny":true,
-        "module":"commonjs",
-        "target": "es2017",
+        "moduleResolution": "node", // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24788
+        "target": "es2020",
         "jsx": "react",
-        "watch": true
+        "watch": true,
+        "strictFunctionTypes": false, // https://github.com/reduxjs/reselect/issues/446
     },
     "include": [
         "./src/**/*"

@@ -1,26 +1,31 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "0.1.0",
+    "version": "2.0.0",
     "command": "${workspaceRoot}/node_modules/.bin/webpack",
-    "isShellCommand": true,
     "echoCommand": true,
     "tasks": [
         {
+            "label": "webpack dev",
+            "type": "shell",
+            "command": "${workspaceRoot}/node_modules/.bin/webpack",
             "args": [
                 "-d source-map"
             ],
-            "suppressTaskName": true,
-            "taskName": "webpack dev",
-            "isBuildCommand": true,
+            "problemMatcher": [],
+            "group": {
+                "_id": "build",
+                "isDefault": false
+            }
         },
         {
+            "label": "webpack dist",
+            "type": "shell",
+            "command": "${workspaceRoot}/node_modules/.bin/webpack",
             "args": [
                 "-p"
             ],
-            "suppressTaskName": true,
-            "taskName": "webpack dist",
-            "isBuildCommand": false
+            "problemMatcher": []
         }
     ]
 }
