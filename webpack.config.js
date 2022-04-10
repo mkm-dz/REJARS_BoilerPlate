@@ -4,9 +4,11 @@ const CopyPlugin = require('copy-webpack-plugin');
 const config = (env, argv) => {
     let result = {
         mode: "production",
-        entry: "./src/index.tsx",
+        entry: {
+            "index": "./src/index.tsx",
+        },
         output: {
-            filename: "bundle.js",
+            filename: "[name]_bundle.js",
             path: __dirname + "/dist"
         },
         resolve: {
@@ -40,10 +42,10 @@ const config = (env, argv) => {
 
                 // Images
                 {
-                    test: /\.(woff|woff2|eot|ttf|otf|svg|png)$/,
+                    test: /\.(svg|png)$/,
                     use: [
                         'file-loader'
-                    ]
+                    ],
                 },
             ]
         },
