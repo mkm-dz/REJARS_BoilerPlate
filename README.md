@@ -5,9 +5,7 @@ This boiler plate will leave your repo with a ready-to-use version of webpack, I
 
 # How to run
 1. Clone the repo
-1. run "npm install" in the folder where you cloned
-1. Open the folder with VS Code
-1. On VS Code, "Ctrl+P" -> "Run Task"
-1. Select "dev" configuration (no minified code, source maps available)
-1. Select "production" configuration (minified code, no source maps)
+1. run `npm install` in the folder where you cloned
+1. run `npm run build` to get dev configuration (no minified code, source maps available)
+1. run `npm run release` for production code (minified code, no source maps)
 1. Go to your "dist" folder and open index.html
