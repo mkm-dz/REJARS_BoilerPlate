@@ -1,22 +1,22 @@
 import { connect } from "react-redux";
-import { customActionB, customActionA, IAppActions } from "../actions/appActions";
+import { extraReducerActionThunk, IAppActions } from "../actions/appActions";
 import { App, IConnectedProps, IDispatchProps, IOwnProps } from "../components/App";
-import { IAppState } from "../Interfaces/interfaces";
-import { ThunkDispatch } from "redux-thunk";
+import { IAppModelState, IAppState } from "../Interfaces/interfaces";
+import { ThunkDispatch } from "@reduxjs/toolkit";
+import store from "../store/configureStore";
 
-function mapStateToProps(state: IAppState, ownProps: IOwnProps): IOwnProps & IConnectedProps {
-    return state.appState;
+function mapStateToProps(state: IAppModelState, ownProps: IOwnProps): IOwnProps & IConnectedProps {
+    return {
+        sampleAppState: state.sampleAppState,
+        secondaryAppState: state.sampleAppState
+    };
 }
 
 type DispatchType = ThunkDispatch<IAppState, any, IAppActions>;
+
 function mapDispatchToProps(dispatch: DispatchType): IDispatchProps {
     return {
-        /**
-         *  this dispatch is the dispatch that has been overriden by Thunk on the applymiddleware function in 
-         * the store.
-         **/
-        customActionA: (appModel) => dispatch(customActionA(appModel)),
-        customActionB: () => dispatch(customActionB()),
+        extraReducerAction: (sentMessage: string) => dispatch(extraReducerActionThunk({ dispatch: store.dispatch, getState: () => store.getState(), sentMessage }))
     }
 }
 

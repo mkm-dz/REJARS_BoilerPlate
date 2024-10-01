@@ -1,18 +1,15 @@
 import * as React from "react";
 import { ButtonComponent } from "./Button";
 import { IAppModelState } from "../Interfaces/interfaces";
-import { IAppModel } from "../Interfaces/IAppModel";
 
 export interface IOwnProps {
 }
 
-export interface IConnectedProps {
-    appModel: Readonly<IAppModel>
+export interface IConnectedProps extends IAppModelState {
 }
 
 export interface IDispatchProps {
-    customActionA: (appModel: IAppModel) => void;
-    customActionB: any;
+    extraReducerAction: (sentMessage: string) => void;
 }
 
 type IAppProps = IOwnProps & IConnectedProps & IDispatchProps;
@@ -30,7 +27,7 @@ export class App extends React.PureComponent<IAppProps> {
     }
 
     private testActionA(event: React.MouseEvent<HTMLInputElement>): void {
-        let currentState: IAppModelState = this.props.customActionB();
-        this.props.customActionA(currentState.appModel);
+        let currentState: string = this.props.secondaryAppState;
+        this.props.extraReducerAction(`Triggering the action from App.tsx with currentState:${currentState}`);
     }
 }

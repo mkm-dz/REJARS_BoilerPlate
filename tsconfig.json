@@ -9,7 +9,6 @@
         "moduleResolution": "node", // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/24788
         "target": "es2017",
         "jsx": "react",
-        "watch": true,
         "strictFunctionTypes": false, // https://github.com/reduxjs/reselect/issues/446
     },
     "include": [
