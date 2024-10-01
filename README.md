@@ -1,7 +1,7 @@
 # REJARS_BoilerPlate
 
 Yes, another boiler plate. Mostly used by me on my projects but you're welcome to use it on yours.
-This boiler plate will leave your repo with a ready-to-use version of webpack, ImmutableJS, Redux, React, Less preprocessor, Terser and the associated VS Code task to use it.
+This boiler plate will leave your repo with a ready-to-use version of webpack, Redux, React, Redux Toolkit(RTK), Less preprocessor, Terser and the associated VS Code task to use it.
 
 # How to run
 1. Clone the repo

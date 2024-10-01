@@ -1,6 +1,3 @@
-import * as Immutable from "immutable";
-import { IAppModel } from "./IAppModel";
-
 // Our full app state will be formed by reducers states.
 export type IAppState = AppReducerState;
 
@@ -9,9 +6,10 @@ export type IAppState = AppReducerState;
  * But any update should be done through an Action
  * */
 export interface IAppModelState {
-    appModel: IAppModel
+    sampleAppState: string;
+    secondaryAppState: string;
 }
 
 export interface AppReducerState {
-    appState: Readonly<IAppModelState>
+    appReducer: Readonly<IAppModelState>
 }

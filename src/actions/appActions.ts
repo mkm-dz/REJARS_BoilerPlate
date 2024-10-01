@@ -1,66 +1,27 @@
-import { IAppModel } from "../Interfaces/IAppModel";
-import { IAppModelState, IAppState } from "../Interfaces/interfaces";
+import { IAppModelState } from "../Interfaces/interfaces";
 import { Constants } from "../common/constants";
 import { Dispatch } from "react";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // We expose the actions through union so we can strong type reducers.
-export type IAppActions = ICustomActionA & ICustomActionB
+export type IAppActions = ISimpleReducerAction & IExtraReducerAction;
 
-/**
- * The customActionA action declaration
- */
-export interface ICustomActionA {
+export interface ISimpleReducerAction {
     type: string;
-    appModel: IAppModel;
+    sampleAppState: string;
 }
 
-/**
- * The customActionB action declaration
- */
-export interface ICustomActionB extends IAppModelState {
+export interface IExtraReducerAction {
     type: string;
+    secondaryAppState: string;
 }
 
-/**
- * customActionA action implementation
- */
-export function customActionAImplementation(appModel: IAppModel): ICustomActionA {
-    return {
-        type: Constants.CustomActionA,
-        appModel
+export const extraReducerActionThunk = createAsyncThunk(
+    'app/extraReducerAction',
+    async (args: { dispatch: Dispatch<any>, getState: () => IAppModelState, sentMessage: string }) => {
+        const currentSampleState = args.getState().sampleAppState;
+        args.dispatch({ type: Constants.simpleReducerAction, payload: { sampleAppState: `currentSampleState:${currentSampleState}, data added on the reducer via simpleReducerAction` } });
+        const newState = args.sentMessage + 'data added on the reducer via extraReducerActionThunk'
+        return { secondaryAppState: newState };
     }
-}
-
-/**
- * customActionB action implementation
- * @param appModel 
- */
-export function customActionBImplementation(
-    appModel: Readonly<IAppModel>): ICustomActionB {
-    return {
-        type: Constants.CustomActionB,
-        appModel,
-    };
-}
-
-/**
- * The action creator for the customActionA action.
- * @param appModel 
- */
-export function customActionA(appModel: IAppModel) {
-    return (dispatch: Dispatch<any>) => {
-        dispatch(customActionAImplementation(appModel));
-    };
-}
-
-/**
- * The action creator for the customActionB action.
- */
-export function customActionB() {
-    return (dispatch: Dispatch<any>, getState: () => IAppState) => {
-        let currentState = getState().appState;
-        return dispatch(customActionBImplementation(currentState));
-    }
-}
-
-
+);

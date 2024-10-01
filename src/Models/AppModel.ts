@@ -1,6 +1,10 @@
-import {IAppModel} from "../Interfaces/IAppModel";
+import { IAppModelState } from "../Interfaces/interfaces";
+export class AppModel implements IAppModelState {
 
-export class AppModel implements IAppModel {
+    public sampleAppState: string;
+    public secondaryAppState: string;
     constructor() {
+        this.sampleAppState = '';
+        this.secondaryAppState = '';
     }
 }
