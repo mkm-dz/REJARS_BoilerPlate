@@ -1,13 +1,14 @@
 import { AppModel } from "../Models/AppModel";
 import { IAppActions, extraReducerActionThunk } from "../actions/appActions";
-import { IAppModelState } from "../Interfaces/interfaces";
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 const name = "app";
 
-// We need to define the initial state for our reducer.
-export const INITIAL_APP_MODEL_STATE = Object.freeze<IAppModelState>(new AppModel());
+// We need to define the initial state for our reducer and we need to use Object assign as this
+// will create a new object with ONLY ENUMERABLE properties, which is useful to get a plain object
+// required by redux.
+export const INITIAL_APP_MODEL_STATE = Object.assign({}, new AppModel());
 
 /**
  * The app reducer.
